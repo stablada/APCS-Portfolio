@@ -1,0 +1,7 @@
+package Model;
+
+public class Main { //Main Class
+  public static void main(String[] args) { //main method running startup method in game class
+    Game.Startup();
+  }
+}
