@@ -1,4 +1,4 @@
-public class Game {
+public class Game { //class Game that encompasses the general points that run calculations for the main class
   private static String input = "";
   
   public static int a = 0;
@@ -11,7 +11,7 @@ public class Game {
   
   private static String lineVar = "";
   
-  public static void run() {
+  public static void run() { //begins and opens a JOP that constitutes the majority of the inputs for the program and begins the program
     JOP.msg("Welcome to this rendition of APLine by Sebastian Tablada!\nThis is a calculator that can find the slope, interception, and even points.");
     input = JOP.in("Would you like to make a line? [Yes] or [Exit]");
     if (input.equalsIgnoreCase("yes")) {
@@ -24,7 +24,7 @@ public class Game {
     } 
   }
   
-  public static void inputLine() {
+  public static void inputLine() { //The main formula input source area
     lineVar = JOP.in("Please input your A variable {Ax + By + C = 0}");
     a = Integer.parseInt(lineVar);
     lineVar = JOP.in("Please input your B variable {Ax + By + C = 0}");
@@ -34,7 +34,7 @@ public class Game {
     display();
   }
   
-  public static void display() {
+  public static void display() { //displays all info inputted on a JOP
     input = JOP.in("Got it! Here's your line's info:\nFormula: " + 
         a + "x" + " + " + b + "y" + " + " + c + " = " + yint + 
         "\nSlope: " + Methods.slope(a, b) + 
