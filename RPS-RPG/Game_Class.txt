@@ -1,0 +1,18 @@
+public class Game {
+  private static String gameMode = " ";
+  
+  public static void Startup() {
+    boolean runQuery = true;
+    JOP.msg("Welcome to Rock Paper Scissors RPG!");
+    cpuHelpDialog();
+    CPU.PvC();
+  }
+  
+  public static void playerHelpDialog() {
+    JOP.msg("Game Rules:\nThis game tracks wins for each player up to 3 rounds, then gives one point to the total winner.\nTo play:\nPlayers take turns typing in their choice, without the other looking at the screen.\nTip: Make sure to designate your status as player one or player two to the other player and keep track of your turns.\nCommands:\n[Exit] - Exits the program entirely.\n[Help] - Reopens this screen.\n[Level] - Displays your current level and upgrade path.\n[Reset] - Resets the whole program, starting from the beginning and clearing all scores.");
+  }
+  
+  public static void cpuHelpDialog() {
+    JOP.msg("Game Rules:\nThis game tracks your wins against the Computer for up to 3 rounds, then gives one point to the total winner.\nTo play:\nType your choice into the type box to make a move.\nThe result of the game will be displayed immidiately after your move.\nCommands:\n[Exit] - Exits the program entirely.\n[Help] - Reopens this screen.\n[Level] - Displays your current level and upgrade path.\n[Reset] - Resets the whole program, starting from the beginning and clearing all scores.");
+  }
+}

@@ -1,0 +1,290 @@
+public class CPU {
+  private static String playerOneMove = " ";
+  
+  private static String playerTwoMove = " ";
+  
+  private static int CPUMove = 0;
+  
+  private static int whoWon = 0;
+  
+  private static int playerOneRoundScore = 0;
+  
+  private static int playerTwoRoundScore = 0;
+  
+  private static int playerOneTotalScore = 0;
+  
+  private static int playerTwoTotalScore = 0;
+  
+  private static String choice = " ";
+  
+  private static int plyrXP = 0;
+  
+  private static int cpuXP = 0;
+  
+  private static int plyrHP = 2;
+  
+  private static int cpuHP = 2;
+  
+  private static int plyrDPS = 1;
+  
+  private static int cpuDPS = 1;
+  
+  public static void PvC() {
+    boolean isOn = true;
+    JOP.msg("Your Turn");
+    while (isOn) {
+      playerOneMove = JOP.in("Please type in your move ([Rock], [Paper], or [Scissors])");
+      if (playerOneMove.equalsIgnoreCase("Rock") || playerOneMove.equalsIgnoreCase("Paper") || playerOneMove.equalsIgnoreCase("Scissors"))
+        isOn = false; 
+    } 
+    isOn = true;
+    for (boolean runCond = true; runCond; runCond = false) {
+      CPUMove = (int)(Math.random() * 3.0D);
+      if (CPUMove <= 3);
+    } 
+    if (CPUMove == 1) {
+      playerTwoMove = "Rock";
+    } else if (CPUMove == 2) {
+      playerTwoMove = "Paper";
+    } else if (CPUMove == 3) {
+      playerTwoMove = "Scissors";
+    } 
+    detectWin();
+    roundResult();
+  }
+  
+  public static void detectWin() {
+    if (playerOneMove.equalsIgnoreCase("Rock") && playerTwoMove.equalsIgnoreCase("Paper")) {
+      whoWon = 2;
+    } else if (playerOneMove.equalsIgnoreCase("Rock") && playerTwoMove.equalsIgnoreCase("Scissors")) {
+      whoWon = 1;
+    } else if (playerOneMove.equalsIgnoreCase("Rock") && playerTwoMove.equalsIgnoreCase("Rock")) {
+      whoWon = 0;
+    } else if (playerOneMove.equalsIgnoreCase("Paper") && playerTwoMove.equalsIgnoreCase("Paper")) {
+      whoWon = 0;
+    } else if (playerOneMove.equalsIgnoreCase("Paper") && playerTwoMove.equalsIgnoreCase("Scissors")) {
+      whoWon = 2;
+    } else if (playerOneMove.equalsIgnoreCase("Paper") && playerTwoMove.equalsIgnoreCase("Rock")) {
+      whoWon = 1;
+    } else if (playerOneMove.equalsIgnoreCase("Scissors") && playerTwoMove.equalsIgnoreCase("Paper")) {
+      whoWon = 1;
+    } else if (playerOneMove.equalsIgnoreCase("Scissors") && playerTwoMove.equalsIgnoreCase("Scissors")) {
+      whoWon = 0;
+    } else if (playerOneMove.equalsIgnoreCase("Scissors") && playerTwoMove.equalsIgnoreCase("Rock")) {
+      whoWon = 2;
+    } 
+  }
+  
+  public static void roundResult() {
+    boolean choiceQuery = true;
+    if (whoWon == 0) {
+      plyrXP++;
+      cpuXP++;
+      JOP.msg("Round Result:\nA tie!\n\nPlayer One's Choice: " + playerOneMove + "\nCPU's Choice: " + playerTwoMove);
+      while (choiceQuery) {
+        choice = JOP.in("Today's Scores are:\nPlayer Health: " + plyrHP + "\nCPU Health: " + cpuHP + "\nPlayer One's Round Score: " + playerOneRoundScore + "\nPlayer One's Total Score: " + playerOneTotalScore + "\n" + "\nCPU's Round Score: " + playerTwoRoundScore + "\nCPU Two's Total Score: " + playerTwoTotalScore + "\nWould you like to input a command? ([Exit], [Reset], [Help], [Level], or [Continue])");
+        if (choice.equalsIgnoreCase("Exit")) {
+          choiceQuery = false;
+          System.exit(0);
+          continue;
+        } 
+        if (choice.equalsIgnoreCase("Level")) {
+          choiceQuery = false;
+          JOP.msg("Here are your total skills:\nHealth: " + 
+              plyrHP + 
+              "\nDamage: " + plyrDPS + 
+              "\nCharge Meter" + plyrXP);
+          continue;
+        } 
+        if (choice.equalsIgnoreCase("Reset")) {
+          choiceQuery = false;
+          playerOneMove = " ";
+          playerTwoMove = " ";
+          whoWon = 0;
+          playerOneRoundScore = 0;
+          playerTwoRoundScore = 0;
+          playerOneTotalScore = 0;
+          playerTwoTotalScore = 0;
+          choice = " ";
+          plyrXP = 0;
+          cpuXP = 0;
+          plyrHP = 2;
+          cpuHP = 2;
+          plyrDPS = 1;
+          cpuDPS = 1;
+          Game.Startup();
+          continue;
+        } 
+        if (choice.equalsIgnoreCase("Help")) {
+          choiceQuery = false;
+          Game.cpuHelpDialog();
+          PvC();
+          continue;
+        } 
+        if (!choice.equalsIgnoreCase("Continue"))
+          continue; 
+        choiceQuery = false;
+        PvC();
+      } 
+    } else if (whoWon == 1) {
+      playerOneRoundScore++;
+      plyrXP += 2;
+      cpuXP++;
+      plyrHP++;
+      cpuHP -= plyrDPS;
+      if (plyrXP >= 10) {
+        plyrXP = 0;
+        cpuHP += plyrDPS;
+        cpuHP -= plyrDPS * 3;
+      } 
+      if (cpuHP <= 0) {
+        JOP.msg("CPU has been defeated! Player Wins!");
+        System.exit(0);
+      } 
+      if (plyrHP <= 0) {
+        JOP.msg("Player has been defeated! CPU Wins!");
+        System.exit(0);
+      } 
+      if (playerOneRoundScore == 3) {
+        playerOneTotalScore++;
+        playerOneRoundScore = 0;
+        playerTwoRoundScore = 0;
+        JOP.msg("Player One Has Scored a Win!");
+      } 
+      if (playerTwoRoundScore == 3) {
+        playerTwoTotalScore++;
+        playerTwoRoundScore = 0;
+        playerOneRoundScore = 0;
+        JOP.msg("The CPU Has Scored a Win!");
+      } 
+      JOP.msg("Round Result:\nPlayer One Wins!\nPlayer One's Choice: " + playerOneMove + "\nCPU's Choice: " + playerTwoMove);
+      while (choiceQuery) {
+        choice = JOP.in("Today's Scores are:\nPlayer Health: " + plyrHP + "\nCPU Health: " + cpuHP + "\nPlayer One's Round Score: " + playerOneRoundScore + "\nPlayer One's Total Score: " + playerOneTotalScore + "\n" + "\nCPU's Round Score: " + playerTwoRoundScore + "\nCPU Two's Total Score: " + playerTwoTotalScore + "\nWould you like to input a command? ([Exit], [Reset], [Help], [Level], or [Continue])");
+        if (choice.equalsIgnoreCase("Exit")) {
+          choiceQuery = false;
+          System.exit(0);
+          continue;
+        } 
+        if (choice.equalsIgnoreCase("Reset")) {
+          choiceQuery = false;
+          playerOneMove = " ";
+          playerTwoMove = " ";
+          whoWon = 0;
+          playerOneRoundScore = 0;
+          playerTwoRoundScore = 0;
+          playerOneTotalScore = 0;
+          playerTwoTotalScore = 0;
+          choice = " ";
+          plyrXP = 0;
+          cpuXP = 0;
+          plyrHP = 2;
+          cpuHP = 2;
+          plyrDPS = 1;
+          cpuDPS = 1;
+          Game.Startup();
+          continue;
+        } 
+        if (choice.equalsIgnoreCase("Level")) {
+          choiceQuery = false;
+          JOP.msg("Here are your total skills:\nHealth: " + 
+              plyrHP + 
+              "\nDamage: " + plyrDPS + 
+              "\nCharge Meter" + plyrXP);
+          continue;
+        } 
+        if (choice.equalsIgnoreCase("Help")) {
+          choiceQuery = false;
+          Game.cpuHelpDialog();
+          PvC();
+          continue;
+        } 
+        if (!choice.equalsIgnoreCase("Continue"))
+          continue; 
+        choiceQuery = false;
+        PvC();
+      } 
+    } else if (whoWon == 2) {
+      playerTwoRoundScore++;
+      plyrHP -= cpuDPS;
+      plyrXP++;
+      cpuHP++;
+      cpuXP += 2;
+      if (cpuXP >= 10) {
+        cpuXP = 0;
+        plyrHP += cpuDPS;
+        plyrHP -= cpuDPS * 3;
+      } 
+      if (cpuHP <= 0) {
+        JOP.msg("CPU has been defeated! Player Wins!");
+        System.exit(0);
+      } 
+      if (plyrHP <= 0) {
+        JOP.msg("Player has been defeated! CPU Wins!");
+        System.exit(0);
+      } 
+      if (playerOneRoundScore == 3) {
+        playerOneTotalScore++;
+        playerOneRoundScore = 0;
+        playerTwoRoundScore = 0;
+        JOP.msg("Player One Has Scored a Win!");
+        String ans = JOP.in("You have leveled up!\n Would you like to level up your Health or Damage?");
+        if (ans.equalsIgnoreCase("damage"))
+          plyrDPS++; 
+        if (ans.equalsIgnoreCase("health"))
+          plyrHP += 2; 
+      } 
+      if (playerTwoRoundScore == 3) {
+        playerTwoTotalScore++;
+        playerTwoRoundScore = 0;
+        playerOneRoundScore = 0;
+        JOP.msg("The CPU Has Scored a Win!");
+      } 
+      JOP.msg("Round Result:\nPlayer Two Wins!\n\nPlayer One's Choice: " + playerOneMove + "\nCPU's Choice: " + playerTwoMove);
+      while (choiceQuery) {
+        choice = JOP.in("Today's Scores are:\nPlayer Health: " + plyrHP + "\nCPU Health: " + cpuHP + "\nPlayer One's Round Score: " + playerOneRoundScore + "\nPlayer One's Total Score: " + playerOneTotalScore + "\n" + "\nCPU's Round Score: " + playerTwoRoundScore + "\nCPU Two's Total Score: " + playerTwoTotalScore + "\nWould you like to input a command? ([Exit], [Reset], [Help], [Level], or [Continue])");
+        if (choice.equalsIgnoreCase("Exit")) {
+          choiceQuery = false;
+          System.exit(0);
+          continue;
+        } 
+        if (choice.equalsIgnoreCase("Reset")) {
+          choiceQuery = false;
+          playerOneMove = " ";
+          playerTwoMove = " ";
+          whoWon = 0;
+          playerOneRoundScore = 0;
+          playerTwoRoundScore = 0;
+          playerOneTotalScore = 0;
+          playerTwoTotalScore = 0;
+          choice = " ";
+          plyrXP = 0;
+          cpuXP = 0;
+          plyrHP = 2;
+          cpuHP = 2;
+          plyrDPS = 1;
+          cpuDPS = 1;
+          Game.Startup();
+          continue;
+        } 
+        if (choice.equalsIgnoreCase("Level")) {
+          choiceQuery = false;
+          JOP.msg("Here are your total skills:\nHealth: " + 
+              plyrHP + 
+              "\nDamage: " + plyrDPS + 
+              "\nCharge Meter" + plyrXP);
+          continue;
+        } 
+        if (choice.equalsIgnoreCase("Help")) {
+          choiceQuery = false;
+          Game.cpuHelpDialog();
+          PvC();
+          continue;
+        } 
+        if (!choice.equalsIgnoreCase("Continue"))
+          continue; 
+        choiceQuery = false;
+        PvC();
+      } 
+    } 
+  }
+}
