@@ -1,0 +1,88 @@
+package Model;
+
+import Control.JOP;
+import java.util.ArrayList;
+import javax.swing.JFrame;
+
+public class MasterOrder {
+  private String orderType = "";
+  
+  private int orderNum = 0;
+  
+  private ArrayList<CookieOrder> orders;
+  
+  JFrame f;
+  
+  public static boolean isOn = true;
+  
+  public static String order = "";
+  
+  public MasterOrder() {
+    this.orders = new ArrayList<CookieOrder>();
+    JOP.msg("Welcome to CookieOrders!");
+    String addorder = "";
+    while (isOn) {
+      JOP.refreshFrame();
+      addorder = JOP.in("Would you like to add a new cookie order? [yes or no (or exit to kill program, remove to remove from list)]");
+      if (addorder.equalsIgnoreCase("yes")) {
+        this.orderType = JOP.in("Add your order in the format [Ordername] to add it into the master order.");
+        this.orderNum = JOP.in2("Add your order in the format [Ordercount (in numbers)] to add it into the master order.");
+        boolean replOn = false;
+        for (int i = 0; i < CookieOrder.boxType.size(); i++) {
+          if (this.orderType.equals(CookieOrder.boxType.get(i))) {
+            int addCount = Integer.parseInt(CookieOrder.boxCount.get(i)) + Integer.parseInt(String.valueOf(this.orderNum));
+            CookieOrder.boxCount.remove(i);
+            CookieOrder.boxCount.add(i, String.valueOf(addCount));
+            replOn = true;
+          } 
+        } 
+        if (!replOn);
+        continue;
+      } 
+      if (addorder.equalsIgnoreCase("exit")) {
+        System.exit(0);
+        continue;
+      } 
+      if (addorder.equalsIgnoreCase("remove")) {
+        String remName = JOP.in("What would you like to remove?");
+        int remAmnt = removeVariety(remName);
+        JOP.msg("Removed " + remAmnt + " instances.");
+        continue;
+      } 
+      if (addorder.equalsIgnoreCase("test"))
+        JOP.msg("This is a test function. If you figured this out and were not told, good job with this. You get an achievement!"); 
+    } 
+  }
+  
+  public void addOrder(CookieOrder theOrder) {
+    this.orders.add(theOrder);
+    JOP.msg("Order Added!");
+  }
+  
+  public void setOrderVars(String s) {
+    int cnt = 0;
+    for (int i = 0; i < s.length(); i++) {
+      if (s.charAt(i) == ' ')
+        cnt = i; 
+    } 
+  }
+  
+  public int getTotalBoxes() {
+    int cnt = 0;
+    for (CookieOrder co : this.orders)
+      cnt += co.getNumBoxes(); 
+    return cnt;
+  }
+  
+  public int removeVariety(String cookieVar) {
+    int numBoxesRemoved = 0;
+    for (int i = CookieOrder.boxType.size() - 1; i >= 0; i--) {
+      if (cookieVar.equals(CookieOrder.boxType.get(i))) {
+        numBoxesRemoved++;
+        CookieOrder.boxType.remove(i);
+        CookieOrder.boxCount.remove(i);
+      } 
+    } 
+    return numBoxesRemoved;
+  }
+}

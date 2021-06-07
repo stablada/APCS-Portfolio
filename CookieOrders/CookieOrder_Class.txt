@@ -1,0 +1,36 @@
+package Model;
+
+import java.util.ArrayList;
+
+public class CookieOrder {
+  private String _type;
+  
+  private int _boxCount;
+  
+  public static ArrayList<String> boxType = new ArrayList<String>();
+  
+  public static ArrayList<String> boxCount = new ArrayList<String>();
+  
+  public CookieOrder(String variety, int numBoxes) {
+    this._type = variety;
+    this._boxCount = numBoxes;
+    boxType.add(variety);
+    boxCount.add(String.valueOf(numBoxes));
+  }
+  
+  public static ArrayList<String> getCookieList() {
+    return boxType;
+  }
+  
+  public static ArrayList<String> getCountList() {
+    return boxCount;
+  }
+  
+  public String getVariety() {
+    return this._type;
+  }
+  
+  public int getNumBoxes() {
+    return this._boxCount;
+  }
+}

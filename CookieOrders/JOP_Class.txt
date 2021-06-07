@@ -1,0 +1,66 @@
+package Control;
+
+import Model.CookieOrder;
+import Model.MasterOrder;
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+public class JOP {
+  static JFrame f;
+  
+  public static void msg(String msg) {
+    JOptionPane.showMessageDialog(null, msg);
+    JButton jbtnExit = new JButton("Exit");
+    jbtnExit.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            System.exit(0);
+          }
+        });
+  }
+  
+  public static String in(String msg) {
+    return JOptionPane.showInputDialog(msg);
+  }
+  
+  public static int in2(String msg) {
+    return Integer.parseInt(JOptionPane.showInputDialog(msg));
+  }
+  
+  public static void showVals(ArrayList<String> lst, ArrayList<String> cnt) {
+    JFrame f = new JFrame("OrderList");
+    JLabel l1 = new JLabel(String.valueOf(lst));
+    l1.setBounds(50, 50, 1080, 30);
+    JLabel l12 = new JLabel("Cookie Type:");
+    l12.setBounds(50, 20, 1080, 30);
+    JLabel l2 = new JLabel(String.valueOf(cnt));
+    l2.setBounds(50, 100, 1080, 30);
+    JLabel l23 = new JLabel("Cookie Count:");
+    l23.setBounds(50, 70, 1080, 30);
+    f.add(l1);
+    f.add(l2);
+    f.add(l12);
+    f.add(l23);
+    f.setSize(1080, 720);
+    f.setLayout((LayoutManager)null);
+    f.setVisible(true);
+  }
+  
+  public static void refreshFrame() {
+    showVals(CookieOrder.getCookieList(), CookieOrder.getCountList());
+  }
+  
+  public static void windowClosing(WindowEvent e) {
+    int a = JOptionPane.showConfirmDialog(f, "Are you sure?");
+    if (a == 0) {
+      MasterOrder.isOn = false;
+      f.setDefaultCloseOperation(3);
+    } 
+  }
+}
