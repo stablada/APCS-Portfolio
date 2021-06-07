@@ -1,4 +1,4 @@
-public class Main {
+public class Main { \\Redirects to Game.run Method to start the program sequence
   public static void main(String[] args) {
     Game.run();
   }
