@@ -1,0 +1,98 @@
+public class Time {
+  public static String calculateTimeToString(double timeParam) {
+    double years = 0.0D;
+    double months = 0.0D;
+    double weeks = 0.0D;
+    double days = 0.0D;
+    double hours = 0.0D;
+    double minutes = 0.0D;
+    double seconds = 0.0D;
+    int secondsI = 0;
+    boolean useYears = false;
+    boolean useMonths = false;
+    boolean useWeeks = false;
+    boolean useDays = false;
+    boolean useHours = false;
+    boolean useMinutes = false;
+    boolean useSeconds = false;
+    int remove = 0;
+    double time = timeParam;
+    String finalTime = "";
+    minutes = time;
+    hours = time / 60.0D;
+    days = hours / 24.0D;
+    weeks = days / 7.0D;
+    months = weeks / 4.0D;
+    years = months / 12.0D;
+    if ((int)years > 0) {
+      remove = (int)years;
+      remove *= 12;
+      months -= remove;
+    } 
+    if ((int)months > 0) {
+      remove = (int)months;
+      remove *= 4;
+      weeks -= remove;
+    } 
+    if ((int)weeks > 0) {
+      remove = (int)weeks;
+      remove *= 7;
+      weeks = days - remove;
+    } 
+    if ((int)days > 0) {
+      remove = (int)days;
+      remove *= 24;
+      hours -= remove;
+    } 
+    if ((int)hours > 0) {
+      remove = (int)hours;
+      remove *= 60;
+      minutes -= remove;
+    } 
+    seconds = minutes * 60.0D;
+    if ((int)minutes > 0) {
+      remove = (int)minutes;
+      remove *= 60;
+      seconds -= remove;
+    } else {
+      seconds = 0.0D;
+    } 
+    int yearsI = (int)years;
+    int monthsI = (int)months;
+    int weeksI = (int)weeks;
+    int daysI = (int)days;
+    int hoursI = (int)hours;
+    int minutesI = (int)minutes;
+    secondsI = (int)seconds;
+    if (yearsI > 0)
+      useYears = true; 
+    if (monthsI > 0)
+      useMonths = true; 
+    if (weeksI > 0)
+      useWeeks = true; 
+    if (daysI > 0)
+      useDays = true; 
+    if (hoursI > 0)
+      useHours = true; 
+    if (minutesI > 0)
+      useMinutes = true; 
+    if (secondsI > 0)
+      useSeconds = true; 
+    finalTime = "Total Duration of the Hike:";
+    if (useYears)
+      finalTime = String.valueOf(finalTime) + " " + yearsI + "Years,"; 
+    if (useMonths)
+      finalTime = String.valueOf(finalTime) + " " + monthsI + "Months,"; 
+    if (useWeeks)
+      finalTime = String.valueOf(finalTime) + " " + weeksI + "Weeks,"; 
+    if (useDays)
+      finalTime = String.valueOf(finalTime) + " " + daysI + "Days,"; 
+    if (useHours)
+      finalTime = String.valueOf(finalTime) + " " + hoursI + "Hours,"; 
+    if (useMinutes)
+      finalTime = String.valueOf(finalTime) + " " + minutesI + "Minutes,"; 
+    if (useSeconds)
+      finalTime = String.valueOf(finalTime) + " " + secondsI + "Seconds."; 
+    return finalTime;
+  }
+}

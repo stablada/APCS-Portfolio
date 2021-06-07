@@ -1,0 +1,47 @@
+public class HikerControl {
+  public static void start() {
+    JOP.msg("Welcome to Hiking Club!");
+    JOP.msg("In this program, you can imput the name of a hiker, how long it took them to hike, and where they hiked.\n This is then put into a list and shown to you for your viewing pleasure!");
+    help();
+    runMainSequence();
+  }
+  
+  public static void help() {
+    JOP.msg("Here's a list of this program's controls!\n [Exit] - Exit the program entirely.\n [Add] - Add a Hiker's Score.\n [Help] - Bring this screen up again.");
+  }
+  
+  public static void addHiker() {
+    JOP.msg("Please follow the instructions on the Popup to add a Hiker.");
+    String hName = JOP.in("What is the Hiker's Name? [Please input First Last]");
+    double hTime = JOP.in2("How much time did the Hiker Hike? [Please input time in Minutes (Numbers Only)]");
+    String hLoc = JOP.in("Where did the Hiker Hike? [Please input Location]");
+    OrderControl obj = new OrderControl(hName, hTime, hLoc);
+  }
+  
+  public static void searchIn(String in) {
+    if (in.equalsIgnoreCase("exit"))
+      System.exit(0); 
+    if (in.equalsIgnoreCase("add"))
+      addHiker(); 
+    if (in.equalsIgnoreCase("help"))
+      help(); 
+  }
+  
+  public static void runMainSequence() {
+    boolean isOn = true;
+    String displayNames = "Here's Today's List of Hikers!";
+    String imput = "";
+    while (isOn) {
+      displayNames = "Here's Today's List of Hikers!";
+      if (OrderControl.hikerNameList != null) {
+        OrderControl.sort();
+        for (int i = 0; i < OrderControl.hikerNameList.size(); i++)
+          displayNames = String.valueOf(displayNames) + "\n " + (String)OrderControl.hikerNameList.get(i); 
+      } 
+      imput = JOP.in(String.valueOf(displayNames) + "\n What would you like to do?");
+      displayNames = "";
+      searchIn(imput);
+    } 
+  }
+}
+.

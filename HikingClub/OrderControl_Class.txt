@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class OrderControl {
+  public static ArrayList<String> hikerNameList = new ArrayList<>();
+  
+  private static String hikerName = "";
+  
+  private static double hikerTime = 0.0D;
+  
+  private static String hikerLocation = "";
+  
+  public OrderControl(String name, double time, String loc) {
+    hikerName = name;
+    hikerTime = time;
+    hikerLocation = loc;
+    hikerNameList.add(String.valueOf(name) + " hiked across " + loc + " in " + Time.calculateTimeToString(time));
+  }
+  
+  public static void sort() {
+    Collections.sort(hikerNameList);
+  }
+  
+  public static ArrayList<String> getList() {
+    return hikerNameList;
+  }
+  
+  public static double getTime() {
+    return hikerTime;
+  }
+  
+  public static String getName() {
+    return hikerName;
+  }
+  
+  public static String getLoc() {
+    return hikerLocation;
+  }
+}
