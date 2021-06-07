@@ -1,10 +1,10 @@
-public class Methods {
-  public static double slope(int a, int b) {
+public class Methods { //Methods class does all the calculations for the whole program and is called in the game class.
+  public static double slope(int a, int b) { // returns the slope
     double avg = ((0 - a) / b);
     return avg;
   }
   
-  public static void pointLoc(int a, int b, int c) {
+  public static void pointLoc(int a, int b, int c) { //tries to test if a point is on the specified line
     int x = 0;
     int y = 0;
     int calc = 0;
@@ -25,15 +25,15 @@ public class Methods {
     } 
   }
   
-  public static void addSlope() {
+  public static void addSlope() { //adds slope to the line
     Game.a *= Integer.parseInt(JOP.in("What would you like the slope to be multiplied by?"));
   }
   
-  public static void addInter() {
+  public static void addInter() { //adds the y intercept to the line
     Game.yint = Integer.parseInt(JOP.in("What would you like the y intercept to be?"));
   }
   
-  public static void interLoc(int a, int b, int c) {
+  public static void interLoc(int a, int b, int c) { //tries to find intersection between two lines and the point at which they meet
     int x = 0;
     int y = 0;
     int z = 0;
