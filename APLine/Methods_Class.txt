@@ -1,0 +1,58 @@
+public class Methods {
+  public static double slope(int a, int b) {
+    double avg = ((0 - a) / b);
+    return avg;
+  }
+  
+  public static void pointLoc(int a, int b, int c) {
+    int x = 0;
+    int y = 0;
+    int calc = 0;
+    x = Integer.parseInt(JOP.in("Plug in the X coordinate."));
+    y = Integer.parseInt(JOP.in("Plug in the Y coordinate."));
+    calc = a * x;
+    calc += b * y;
+    calc += c;
+    if (calc == 0) {
+      JOP.msg("This point is on the line!");
+      Game.display();
+    } else if (calc > 0) {
+      JOP.msg("This point is above the line!");
+      Game.display();
+    } else if (calc < 0) {
+      JOP.msg("This point is below the line!");
+      Game.display();
+    } 
+  }
+  
+  public static void addSlope() {
+    Game.a *= Integer.parseInt(JOP.in("What would you like the slope to be multiplied by?"));
+  }
+  
+  public static void addInter() {
+    Game.yint = Integer.parseInt(JOP.in("What would you like the y intercept to be?"));
+  }
+  
+  public static void interLoc(int a, int b, int c) {
+    int x = 0;
+    int y = 0;
+    int z = 0;
+    int calc = 0;
+    x = Integer.parseInt(JOP.in("Plug in the a value."));
+    y = Integer.parseInt(JOP.in("Plug in the b value."));
+    z = Integer.parseInt(JOP.in("Plug in the c value."));
+    calc = a * x;
+    calc += b * y;
+    calc += c + z;
+    if (calc > 0) {
+      JOP.msg("This line intersects!");
+      Game.display();
+    } else if (calc == 0) {
+      JOP.msg("This line does not intersect\nIt is below the other line");
+      Game.display();
+    } else if (calc < 0) {
+      JOP.msg("This line does not intersect\nIt is above the other line");
+      Game.display();
+    } 
+  }
+}

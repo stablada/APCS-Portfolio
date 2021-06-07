@@ -1,0 +1,58 @@
+public class Game {
+  private static String input = "";
+  
+  public static int a = 0;
+  
+  private static int b = 0;
+  
+  private static int c = 0;
+  
+  public static int yint = 0;
+  
+  private static String lineVar = "";
+  
+  public static void run() {
+    JOP.msg("Welcome to this rendition of APLine by Sebastian Tablada!\nThis is a calculator that can find the slope, interception, and even points.");
+    input = JOP.in("Would you like to make a line? [Yes] or [Exit]");
+    if (input.equalsIgnoreCase("yes")) {
+      inputLine();
+    } else if (input.equalsIgnoreCase("exit")) {
+      System.exit(0);
+    } else if (input.equalsIgnoreCase("no")) {
+      JOP.msg("a.");
+      run();
+    } 
+  }
+  
+  public static void inputLine() {
+    lineVar = JOP.in("Please input your A variable {Ax + By + C = 0}");
+    a = Integer.parseInt(lineVar);
+    lineVar = JOP.in("Please input your B variable {Ax + By + C = 0}");
+    b = Integer.parseInt(lineVar);
+    lineVar = JOP.in("Please input your C variable {Ax + By + C = 0}");
+    c = Integer.parseInt(lineVar);
+    display();
+  }
+  
+  public static void display() {
+    input = JOP.in("Got it! Here's your line's info:\nFormula: " + 
+        a + "x" + " + " + b + "y" + " + " + c + " = " + yint + 
+        "\nSlope: " + Methods.slope(a, b) + 
+        "\na = " + a + 
+        "\nb = " + b + 
+        "\nc = " + c + 
+        "\n" + 
+        "\nWould you like to add some info? [Point], [Add Slope], [Add Intercept], [Add Line], [Exit]");
+    if (input.equalsIgnoreCase("Point")) {
+      Methods.pointLoc(a, b, c);
+    } else if (input.equalsIgnoreCase("Add Slope")) {
+      Methods.addSlope();
+    } else if (input.equalsIgnoreCase("Add Intercept")) {
+      Methods.addInter();
+    } else if (input.equalsIgnoreCase("Add Line")) {
+      Methods.interLoc(a, b, c);
+    } else if (input.equalsIgnoreCase("exit")) {
+      System.exit(0);
+    } 
+  }
+}

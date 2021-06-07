@@ -1,0 +1,15 @@
+import javax.swing.JOptionPane;
+
+public class JOP {
+  public static void msg(Object msg) {
+    JOptionPane.showMessageDialog(null, msg);
+  }
+  
+  public static void err(Object msg) {
+    JOptionPane.showConfirmDialog(null, msg);
+  }
+  
+  public static String in(Object msg) {
+    return JOptionPane.showInputDialog(msg);
+  }
+}
