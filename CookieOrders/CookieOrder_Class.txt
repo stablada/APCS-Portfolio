@@ -2,7 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 
-public class CookieOrder {
+public class CookieOrder { //cookieorder class encompasses the majority of the arraylist manipulation for the program
   private String _type;
   
   private int _boxCount;
@@ -11,26 +11,26 @@ public class CookieOrder {
   
   public static ArrayList<String> boxCount = new ArrayList<String>();
   
-  public CookieOrder(String variety, int numBoxes) {
+  public CookieOrder(String variety, int numBoxes) { //constructor for a cookieorder object
     this._type = variety;
     this._boxCount = numBoxes;
     boxType.add(variety);
     boxCount.add(String.valueOf(numBoxes));
   }
   
-  public static ArrayList<String> getCookieList() {
+  public static ArrayList<String> getCookieList() { //returns boxtype arraylist (getter method)
     return boxType;
   }
   
-  public static ArrayList<String> getCountList() {
+  public static ArrayList<String> getCountList() { //returns boxcount arraylist (getter method)
     return boxCount;
   }
   
-  public String getVariety() {
+  public String getVariety() { //returns type variable (getter method)
     return this._type;
   }
   
-  public int getNumBoxes() {
+  public int getNumBoxes() { //returns the boxcount variable (getter method)
     return this._boxCount;
   }
 }
