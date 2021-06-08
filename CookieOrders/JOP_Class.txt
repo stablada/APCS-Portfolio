@@ -12,10 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-public class JOP {
+public class JOP { //Handles the UI for the code
   static JFrame f;
   
-  public static void msg(String msg) {
+  public static void msg(String msg) { //pulls up a pane that displays a message (param.)
     JOptionPane.showMessageDialog(null, msg);
     JButton jbtnExit = new JButton("Exit");
     jbtnExit.addActionListener(new ActionListener() {
@@ -25,15 +25,15 @@ public class JOP {
         });
   }
   
-  public static String in(String msg) {
+  public static String in(String msg) { //input JOP style for inputs into vars
     return JOptionPane.showInputDialog(msg);
   }
   
-  public static int in2(String msg) {
+  public static int in2(String msg) { //input JOP style for inputs into vars specifically integers
     return Integer.parseInt(JOptionPane.showInputDialog(msg));
   }
   
-  public static void showVals(ArrayList<String> lst, ArrayList<String> cnt) {
+  public static void showVals(ArrayList<String> lst, ArrayList<String> cnt) { //A JFrame that displays the information from all arraylists
     JFrame f = new JFrame("OrderList");
     JLabel l1 = new JLabel(String.valueOf(lst));
     l1.setBounds(50, 50, 1080, 30);
@@ -52,11 +52,11 @@ public class JOP {
     f.setVisible(true);
   }
   
-  public static void refreshFrame() {
+  public static void refreshFrame() { //refreshes the JFrame above
     showVals(CookieOrder.getCookieList(), CookieOrder.getCountList());
   }
   
-  public static void windowClosing(WindowEvent e) {
+  public static void windowClosing(WindowEvent e) { //closing the JFrame pops up this dialog to confirm exit
     int a = JOptionPane.showConfirmDialog(f, "Are you sure?");
     if (a == 0) {
       MasterOrder.isOn = false;
