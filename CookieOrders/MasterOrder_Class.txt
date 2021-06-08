@@ -4,7 +4,7 @@ import Control.JOP;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 
-public class MasterOrder {
+public class MasterOrder { //ties all classes together to make the main program
   private String orderType = "";
   
   private int orderNum = 0;
@@ -17,7 +17,7 @@ public class MasterOrder {
   
   public static String order = "";
   
-  public MasterOrder() {
+  public MasterOrder() { //MasterOrder object that acts as the main run sequence for the program
     this.orders = new ArrayList<CookieOrder>();
     JOP.msg("Welcome to CookieOrders!");
     String addorder = "";
@@ -54,12 +54,12 @@ public class MasterOrder {
     } 
   }
   
-  public void addOrder(CookieOrder theOrder) {
+  public void addOrder(CookieOrder theOrder) { //adds an order to arraylist orders
     this.orders.add(theOrder);
     JOP.msg("Order Added!");
   }
   
-  public void setOrderVars(String s) {
+  public void setOrderVars(String s) { //looks for spaces between words for naming purposes
     int cnt = 0;
     for (int i = 0; i < s.length(); i++) {
       if (s.charAt(i) == ' ')
@@ -67,14 +67,14 @@ public class MasterOrder {
     } 
   }
   
-  public int getTotalBoxes() {
+  public int getTotalBoxes() { //returns total boxes
     int cnt = 0;
     for (CookieOrder co : this.orders)
       cnt += co.getNumBoxes(); 
     return cnt;
   }
   
-  public int removeVariety(String cookieVar) {
+  public int removeVariety(String cookieVar) { //cuts out multiple seperate orders to consolidate them to one big order
     int numBoxesRemoved = 0;
     for (int i = CookieOrder.boxType.size() - 1; i >= 0; i--) {
       if (cookieVar.equals(CookieOrder.boxType.get(i))) {
