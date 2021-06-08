@@ -1,7 +1,7 @@
-public class Game {
+public class Game { //controls the main beginnning JOPs that display all information relating to the game and all commands possible
   private static String gameMode = " ";
   
-  public static void Startup() {
+  public static void Startup() { //Displays all options and then redirects to the CPU fight
     boolean runQuery = true;
     JOP.msg("Welcome to Rock Paper Scissors RPG!");
     cpuHelpDialog();
