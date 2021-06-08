@@ -1,5 +1,5 @@
-public class Time {
-  public static String calculateTimeToString(double timeParam) {
+public class Time { //class that calculates times in an inefficent way
+  public static String calculateTimeToString(double timeParam) { //calculates the sentence displayed on the JPanel that tells the hiker's time
     double years = 0.0D;
     double months = 0.0D;
     double weeks = 0.0D;
