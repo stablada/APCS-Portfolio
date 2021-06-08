@@ -1,5 +1,5 @@
 package Model;
 
-public class Main {
-  public static void main(String[] args) {}
+public class Main { //Main Class - just redirects to set all other mehods into motion
+  public static void main(String[] args) {} //makes all other parts of the program turn on
 }
