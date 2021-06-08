@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class OrderControl {
+public class OrderControl { //controls the hikernamelist arraylist and gets hiker "orders" or just all info
   public static ArrayList<String> hikerNameList = new ArrayList<>();
   
   private static String hikerName = "";
@@ -10,30 +10,30 @@ public class OrderControl {
   
   private static String hikerLocation = "";
   
-  public OrderControl(String name, double time, String loc) {
+  public OrderControl(String name, double time, String loc) { //creates ordercontrol object, acting almost like a hiker info center
     hikerName = name;
     hikerTime = time;
     hikerLocation = loc;
     hikerNameList.add(String.valueOf(name) + " hiked across " + loc + " in " + Time.calculateTimeToString(time));
   }
   
-  public static void sort() {
+  public static void sort() { //sorts hikernamelist
     Collections.sort(hikerNameList);
   }
   
-  public static ArrayList<String> getList() {
+  public static ArrayList<String> getList() { //returns the list of names
     return hikerNameList;
   }
   
-  public static double getTime() {
+  public static double getTime() { //returns the time var
     return hikerTime;
   }
   
-  public static String getName() {
+  public static String getName() { //returns the name var
     return hikerName;
   }
   
-  public static String getLoc() {
+  public static String getLoc() { //returns the location var
     return hikerLocation;
   }
 }
