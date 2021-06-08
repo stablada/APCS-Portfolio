@@ -8,11 +8,11 @@ public class Game { //controls the main beginnning JOPs that display all informa
     CPU.PvC();
   }
   
-  public static void playerHelpDialog() {
+  public static void playerHelpDialog() { //is never called -- omit from code
     JOP.msg("Game Rules:\nThis game tracks wins for each player up to 3 rounds, then gives one point to the total winner.\nTo play:\nPlayers take turns typing in their choice, without the other looking at the screen.\nTip: Make sure to designate your status as player one or player two to the other player and keep track of your turns.\nCommands:\n[Exit] - Exits the program entirely.\n[Help] - Reopens this screen.\n[Level] - Displays your current level and upgrade path.\n[Reset] - Resets the whole program, starting from the beginning and clearing all scores.");
   }
   
-  public static void cpuHelpDialog() {
+  public static void cpuHelpDialog() { //displays all information for PvCPU battle and all post round commands.
     JOP.msg("Game Rules:\nThis game tracks your wins against the Computer for up to 3 rounds, then gives one point to the total winner.\nTo play:\nType your choice into the type box to make a move.\nThe result of the game will be displayed immidiately after your move.\nCommands:\n[Exit] - Exits the program entirely.\n[Help] - Reopens this screen.\n[Level] - Displays your current level and upgrade path.\n[Reset] - Resets the whole program, starting from the beginning and clearing all scores.");
   }
 }
