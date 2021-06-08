@@ -1,5 +1,5 @@
-public class Main {
-  public static void main(String[] args) {
+public class Main { //in charge of redirecting to starter method in game class
+  public static void main(String[] args) { //redirects to startup method in game class
     Game.Startup();
   }
 }
