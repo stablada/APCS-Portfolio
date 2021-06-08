@@ -1,16 +1,16 @@
-public class HikerControl {
-  public static void start() {
+public class HikerControl { //controls hiker hariables and runs main game
+  public static void start() { //begins intro sequence
     JOP.msg("Welcome to Hiking Club!");
     JOP.msg("In this program, you can imput the name of a hiker, how long it took them to hike, and where they hiked.\n This is then put into a list and shown to you for your viewing pleasure!");
     help();
     runMainSequence();
   }
   
-  public static void help() {
+  public static void help() { // reopens JOP containing instructions
     JOP.msg("Here's a list of this program's controls!\n [Exit] - Exit the program entirely.\n [Add] - Add a Hiker's Score.\n [Help] - Bring this screen up again.");
   }
   
-  public static void addHiker() {
+  public static void addHiker() { //asks all var questions via JOP to make a new hiker obj
     JOP.msg("Please follow the instructions on the Popup to add a Hiker.");
     String hName = JOP.in("What is the Hiker's Name? [Please input First Last]");
     double hTime = JOP.in2("How much time did the Hiker Hike? [Please input time in Minutes (Numbers Only)]");
@@ -18,7 +18,7 @@ public class HikerControl {
     OrderControl obj = new OrderControl(hName, hTime, hLoc);
   }
   
-  public static void searchIn(String in) {
+  public static void searchIn(String in) { //runs main response search for a JOP input panel
     if (in.equalsIgnoreCase("exit"))
       System.exit(0); 
     if (in.equalsIgnoreCase("add"))
@@ -27,7 +27,7 @@ public class HikerControl {
       help(); 
   }
   
-  public static void runMainSequence() {
+  public static void runMainSequence() { //runs main hiking showcase
     boolean isOn = true;
     String displayNames = "Here's Today's List of Hikers!";
     String imput = "";
