@@ -1,5 +1,5 @@
-public class Main {
-  public static void main(String[] args) {
-    HikerControl.start();
+public class Main { //begins program
+  public static void main(String[] args) { //starts program by referencing start method
+    HikerControl.start(); 
   }
 }
